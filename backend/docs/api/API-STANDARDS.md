@@ -209,6 +209,8 @@ Endpoints that create or mutate resources should support an `Idempotency-Key` he
 3. Log a warning in the controller if the deprecated path is hit.
 4. Record the deprecation in [API-CHANGELOG.md](./API-CHANGELOG.md) with a sunset date.
 
+For full details on our versioning lifecycle, deprecation notices (including `Sunset` headers), and migration procedures, refer to the [API Versioning Strategy](./API-VERSIONING.md).
+
 ```typescript
 @ApiOperation({
   summary: '[DEPRECATED] Get payment — use GET /api/payments/:id instead',
