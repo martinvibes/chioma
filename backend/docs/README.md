@@ -13,6 +13,7 @@ Welcome to the Chioma backend documentation hub. This index covers all aspects o
 | [Architecture](#architecture)       | System design, dependency graph, performance     |
 | [Database](#database)               | Schema, migrations, indexes                      |
 | [Blockchain](#blockchain)           | Stellar integration, anchor, SEP-0010 auth       |
+| [Authentication](#authentication)   | JWT, Stellar auth, MFA, guards, security         |
 | [Caching](#caching)                 | Redis/Upstash strategy, invalidation, monitoring |
 | [Queues](#queues)                   | Bull queue implementation                        |
 | [Deployment](#deployment)           | Production setup, Docker, CI/CD                  |
@@ -123,6 +124,18 @@ pnpm run migration:generate  # generate migration from entity changes
 | [Anchor Implementation](./blockchain/ANCHOR_IMPLEMENTATION.md)               | Internal implementation notes                        |
 | [Anchor Integration](./blockchain/anchor-integration.md)                     | Additional anchor setup details                      |
 | [Payment Gateway](./blockchain/payment-gateway-integration.md)               | Stellar payment processing                           |
+
+---
+
+## Authentication
+
+| Document                                                     | Summary                                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| [Authentication Documentation](./AUTHENTICATION.md)          | Full architecture, JWT/Stellar flows, MFA, guards, decorators, security  |
+| [API Authentication Guide](./api/AUTHENTICATION.md)          | Quick API reference with request/response examples                       |
+| [Stellar Auth (SEP-0010)](./blockchain/stellar-auth.md)      | Wallet-based authentication flow details                                 |
+
+Chioma supports dual authentication: **JWT (email/password)** and **Stellar SEP-0010 (wallet)**. Both methods issue JWT access tokens with 15-minute lifetime and HttpOnly cookie refresh tokens with 7-day lifetime. MFA via TOTP is available for all accounts.
 
 ---
 
