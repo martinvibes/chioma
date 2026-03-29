@@ -26,6 +26,7 @@ export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [serverError, setServerError] = useState<string | null>(null);
+  const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
 
   const {
     register,
@@ -240,12 +241,22 @@ export default function LoginPage() {
                   key={email}
                   type="button"
                   onClick={() => {
-                    setValue('email', email);
-                    setValue('password', password);
+                    setValue('email', email, { shouldValidate: true });
+                    setValue('password', password, { shouldValidate: true });
+                    setSelectedDemo(email);
                   }}
-                  className="w-full text-left px-3 py-2 rounded bg-white/5 hover:bg-white/10 text-amber-100 hover:text-amber-50 transition-colors flex justify-between items-center group"
+                  className={`w-full text-left px-3 py-2 rounded text-amber-100 transition-colors flex justify-between items-center group ${
+                    selectedDemo === email
+                      ? 'bg-amber-500/20 border border-amber-500/50 text-amber-50'
+                      : 'bg-white/5 hover:bg-white/10 hover:text-amber-50'
+                  }`}
                 >
-                  <span className="font-medium">{role}</span>
+                  <span className="font-medium flex items-center gap-1.5">
+                    {selectedDemo === email && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block" />
+                    )}
+                    {role}
+                  </span>
                   <span className="font-mono text-amber-200/70 group-hover:text-amber-200 text-xs">
                     {email}
                   </span>
