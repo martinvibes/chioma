@@ -1,4 +1,111 @@
-export const en = {
+export interface TranslationKeys {
+  common: {
+    loading: string;
+    save: string;
+    cancel: string;
+    confirm: string;
+    delete: string;
+    edit: string;
+    close: string;
+    back: string;
+    next: string;
+    submit: string;
+    search: string;
+    filter: string;
+    export: string;
+    connect: string;
+    disconnect: string;
+    settings: string;
+    profile: string;
+    logout: string;
+    noResults: string;
+    error: string;
+    retry: string;
+  };
+  nav: {
+    dashboard: string;
+    properties: string;
+    messages: string;
+    payments: string;
+    documents: string;
+    notifications: string;
+    stellarAccounts: string;
+    transactions: string;
+    profile: string;
+    security: string;
+  };
+  auth: {
+    login: string;
+    signup: string;
+    email: string;
+    password: string;
+    forgotPassword: string;
+    loginSuccess: string;
+    logoutSuccess: string;
+    invalidCredentials: string;
+    sessionExpired: string;
+  };
+  stellar: {
+    accounts: string;
+    account: string;
+    publicKey: string;
+    balance: string;
+    status: string;
+    active: string;
+    inactive: string;
+    accountType: string;
+    createdAt: string;
+    lastActivity: string;
+    history: string;
+    settings: string;
+    connectAccount: string;
+    disconnectAccount: string;
+    noAccounts: string;
+    syncAccount: string;
+    exportData: string;
+    signers: string;
+    trustlines: string;
+    dataEntries: string;
+    sequenceNumber: string;
+  };
+  messaging: {
+    messages: string;
+    newMessage: string;
+    send: string;
+    typeMessage: string;
+    noConversations: string;
+    searchConversations: string;
+    connected: string;
+    reconnecting: string;
+    typing: string;
+    today: string;
+    yesterday: string;
+    startConversation: string;
+    fileAttachment: string;
+    readReceipt: string;
+    sent: string;
+  };
+  errors: {
+    network: string;
+    server: string;
+    unauthorized: string;
+    notFound: string;
+    validation: string;
+    unknown: string;
+  };
+  payments: {
+    payments: string;
+    amount: string;
+    status: string;
+    date: string;
+    pending: string;
+    completed: string;
+    failed: string;
+    initiated: string;
+  };
+}
+
+export const en: TranslationKeys = {
   common: {
     loading: 'Loading...',
     save: 'Save',
@@ -103,6 +210,4 @@ export const en = {
     failed: 'Failed',
     initiated: 'Payment initiated',
   },
-} as const;
-
-export type TranslationKeys = typeof en;
+};

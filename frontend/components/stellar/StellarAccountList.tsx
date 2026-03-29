@@ -40,8 +40,12 @@ export function StellarAccountList({
         <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-4">
           <Wallet size={24} className="text-slate-400" />
         </div>
-        <p className="text-sm font-medium text-slate-300">No Stellar accounts found</p>
-        <p className="text-xs text-slate-500 mt-1">Connect a wallet to get started</p>
+        <p className="text-sm font-medium text-slate-300">
+          No Stellar accounts found
+        </p>
+        <p className="text-xs text-slate-500 mt-1">
+          Connect a wallet to get started
+        </p>
       </div>
     );
   }
@@ -63,11 +67,13 @@ export function StellarAccountList({
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-mono text-xs text-slate-300 truncate max-w-[180px]">
-                  {account.publicKey.slice(0, 8)}…{account.publicKey.slice(-6)}
+                  {account.publicKey.slice(0, 8)}…
+                  {account.publicKey.slice(-6)}
                 </span>
                 <span
                   className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                    TYPE_COLORS[account.accountType] ?? 'bg-white/10 text-slate-400'
+                    TYPE_COLORS[account.accountType] ??
+                    'bg-white/10 text-slate-400'
                   }`}
                 >
                   {account.accountType}

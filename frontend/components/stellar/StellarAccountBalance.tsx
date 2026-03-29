@@ -9,7 +9,9 @@ interface StellarAccountBalanceProps {
   publicKey: string;
 }
 
-export function StellarAccountBalance({ publicKey }: StellarAccountBalanceProps) {
+export function StellarAccountBalance({
+  publicKey,
+}: StellarAccountBalanceProps) {
   const { data, isLoading, error } = useQuery({
     queryKey: ['stellar-balances', publicKey],
     queryFn: () => fetchAccountBalances(publicKey),

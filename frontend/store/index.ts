@@ -29,7 +29,12 @@ export type { LoadingStore, LoadingKey } from './loading-store';
 export { useLoading, withLoading } from '../hooks/use-loading';
 
 export { useErrorStore, useError } from './errorStore';
-export type { ErrorStore, GlobalError, GlobalErrorCategory, GlobalErrorSeverity } from './errorStore';
+export type {
+  ErrorStore,
+  GlobalError,
+  GlobalErrorCategory,
+  GlobalErrorSeverity,
+} from './errorStore';
 
 // ── Selectors ────────────────────────────────────────────────────────────────
 export {

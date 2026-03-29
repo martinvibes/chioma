@@ -14,7 +14,8 @@ import { WalletConnectButton } from '@/components/blockchain/WalletConnectButton
 
 export function StellarAccountsView() {
   const { user } = useAuthStore();
-  const [selectedAccount, setSelectedAccount] = useState<ManagedStellarAccount | null>(null);
+  const [selectedAccount, setSelectedAccount] =
+    useState<ManagedStellarAccount | null>(null);
 
   const {
     data: accounts = [],
@@ -63,7 +64,12 @@ export function StellarAccountsView() {
       {/* Main Layout */}
       <div className="flex flex-1 gap-4 min-h-0">
         {/* Sidebar — account list */}
-        <aside className="w-72 shrink-0 rounded-2xl bg-slate-800/50 border border-white/10 p-4 overflow-y-auto">
+        <aside
+          className={
+            'w-72 shrink-0 rounded-2xl bg-slate-800/50 border' +
+            ' border-white/10 p-4 overflow-y-auto'
+          }
+        >
           <StellarAccountList
             accounts={accounts}
             selectedId={selectedAccount?.id ?? null}

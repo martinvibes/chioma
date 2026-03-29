@@ -45,8 +45,7 @@ export const fr: TranslationKeys = {
     loginSuccess: 'Connexion réussie',
     logoutSuccess: 'Déconnexion réussie',
     invalidCredentials: 'E-mail ou mot de passe invalide',
-    sessionExpired:
-      'Votre session a expiré. Veuillez vous reconnecter.',
+    sessionExpired: 'Votre session a expiré. Veuillez vous reconnecter.',
   },
   stellar: {
     accounts: 'Comptes Stellar',
@@ -80,8 +79,8 @@ export const fr: TranslationKeys = {
     searchConversations: 'Rechercher des conversations...',
     connected: 'Connecté',
     reconnecting: 'Reconnexion...',
-    typing: 'en train d\'écrire...',
-    today: 'Aujourd\'hui',
+    typing: "en train d'écrire...",
+    today: "Aujourd'hui",
     yesterday: 'Hier',
     startConversation: 'Démarrez la conversation',
     fileAttachment: 'Joindre un fichier',

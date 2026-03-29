@@ -161,7 +161,12 @@ export function useMessaging(): UseMessagingReturn {
   // ── Send a message ──────────────────────────────────────────────────────
   const sendMessage = useCallback(
     (content: string, attachment?: File) => {
-      if (!activeRoom || (!content.trim() && !attachment) || !socketRef.current) return;
+      if (
+        !activeRoom ||
+        (!content.trim() && !attachment) ||
+        !socketRef.current
+      )
+        return;
 
       if (attachment) {
         // Upload file first, then emit with attachment URL
@@ -171,7 +176,10 @@ export function useMessaging(): UseMessagingReturn {
         formData.append('roomId', activeRoom.id);
 
         apiClient
-          .post<Message>(`/messaging/rooms/${activeRoom.id}/messages/attachment`, formData as unknown as Record<string, unknown>)
+          .post<Message>(
+            `/messaging/rooms/${activeRoom.id}/messages/attachment`,
+            formData as unknown as Record<string, unknown>,
+          )
           .then(({ data }) => {
             setMessages((prev: Message[]) => {
               if (prev.some((m: Message) => m.id === data.id)) return prev;
@@ -209,20 +217,23 @@ export function useMessaging(): UseMessagingReturn {
   );
 
   // ── Create a new room ───────────────────────────────────────────────────
-  const createRoom = useCallback(async (participantId: string): Promise<ChatRoom | null> => {
-    try {
-      const { data } = await apiClient.post<ChatRoom>('/messaging/rooms', {
-        participantId,
-      });
-      setRooms((prev: ChatRoom[]) => {
-        if (prev.some((r: ChatRoom) => r.id === data.id)) return prev;
-        return [data, ...prev];
-      });
-      return data;
-    } catch {
-      return null;
-    }
-  }, []);
+  const createRoom = useCallback(
+    async (participantId: string): Promise<ChatRoom | null> => {
+      try {
+        const { data } = await apiClient.post<ChatRoom>('/messaging/rooms', {
+          participantId,
+        });
+        setRooms((prev: ChatRoom[]) => {
+          if (prev.some((r: ChatRoom) => r.id === data.id)) return prev;
+          return [data, ...prev];
+        });
+        return data;
+      } catch {
+        return null;
+      }
+    },
+    [],
+  );
 
   return {
     rooms,
