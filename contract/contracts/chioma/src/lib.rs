@@ -47,6 +47,9 @@ mod tests_multisig;
 #[cfg(test)]
 mod tests_timelock;
 
+#[cfg(test)]
+mod tests_version_pause;
+
 pub use agreement::{
     cancel_agreement, create_agreement, create_agreement_with_token, get_agreement,
     get_agreement_count, get_agreement_token, get_payment_history, get_payment_split,
