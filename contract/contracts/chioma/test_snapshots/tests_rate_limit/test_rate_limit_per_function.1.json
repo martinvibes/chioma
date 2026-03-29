@@ -85,7 +85,7 @@
                         "symbol": "max_calls_per_user_per_day"
                       },
                       "val": {
-                        "u32": 1
+                        "u32": 2
                       }
                     }
                   ]
@@ -119,7 +119,130 @@
                         "symbol": "agreement_id"
                       },
                       "val": {
-                        "string": "agreement1"
+                        "string": "ag1"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "attributes"
+                      },
+                      "val": {
+                        "vec": []
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "landlord"
+                      },
+                      "val": {
+                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "metadata_uri"
+                      },
+                      "val": {
+                        "string": ""
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "payment_token"
+                      },
+                      "val": {
+                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "tenant"
+                      },
+                      "val": {
+                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
+                      }
+                    },
+                    {
+                      "key": {
+                        "symbol": "terms"
+                      },
+                      "val": {
+                        "map": [
+                          {
+                            "key": {
+                              "symbol": "agent_commission_rate"
+                            },
+                            "val": {
+                              "u32": 5
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "end_date"
+                            },
+                            "val": {
+                              "u64": "2000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "monthly_rent"
+                            },
+                            "val": {
+                              "i128": "100000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "security_deposit"
+                            },
+                            "val": {
+                              "i128": "10000"
+                            }
+                          },
+                          {
+                            "key": {
+                              "symbol": "start_date"
+                            },
+                            "val": {
+                              "u64": "1000"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "sub_invocations": []
+        }
+      ]
+    ],
+    [
+      [
+        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
+        {
+          "function": {
+            "contract_fn": {
+              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
+              "function_name": "create_agreement",
+              "args": [
+                {
+                  "map": [
+                    {
+                      "key": {
+                        "symbol": "agent"
+                      },
+                      "val": "void"
+                    },
+                    {
+                      "key": {
+                        "symbol": "agreement_id"
+                      },
+                      "val": {
+                        "string": "ag2"
                       }
                     },
                     {
@@ -221,151 +344,7 @@
       ]
     ],
     [],
-    [
-      [
-        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
-        {
-          "function": {
-            "contract_fn": {
-              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
-              "function_name": "reset_user_rate_limit",
-              "args": [
-                {
-                  "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
-                },
-                {
-                  "string": "create_agreement"
-                }
-              ]
-            }
-          },
-          "sub_invocations": []
-        }
-      ]
-    ],
-    [
-      [
-        "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
-        {
-          "function": {
-            "contract_fn": {
-              "contract_address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
-              "function_name": "create_agreement",
-              "args": [
-                {
-                  "map": [
-                    {
-                      "key": {
-                        "symbol": "agent"
-                      },
-                      "val": "void"
-                    },
-                    {
-                      "key": {
-                        "symbol": "agreement_id"
-                      },
-                      "val": {
-                        "string": "agreement3"
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "attributes"
-                      },
-                      "val": {
-                        "vec": []
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "landlord"
-                      },
-                      "val": {
-                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "metadata_uri"
-                      },
-                      "val": {
-                        "string": ""
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "payment_token"
-                      },
-                      "val": {
-                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4"
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "tenant"
-                      },
-                      "val": {
-                        "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
-                      }
-                    },
-                    {
-                      "key": {
-                        "symbol": "terms"
-                      },
-                      "val": {
-                        "map": [
-                          {
-                            "key": {
-                              "symbol": "agent_commission_rate"
-                            },
-                            "val": {
-                              "u32": 5
-                            }
-                          },
-                          {
-                            "key": {
-                              "symbol": "end_date"
-                            },
-                            "val": {
-                              "u64": "2000"
-                            }
-                          },
-                          {
-                            "key": {
-                              "symbol": "monthly_rent"
-                            },
-                            "val": {
-                              "i128": "100000"
-                            }
-                          },
-                          {
-                            "key": {
-                              "symbol": "security_deposit"
-                            },
-                            "val": {
-                              "i128": "10000"
-                            }
-                          },
-                          {
-                            "key": {
-                              "symbol": "start_date"
-                            },
-                            "val": {
-                              "u64": "1000"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          "sub_invocations": []
-        }
-      ]
-    ]
+    []
   ],
   "ledger": {
     "protocol_version": 23,
@@ -387,7 +366,7 @@
                   "symbol": "Agreement"
                 },
                 {
-                  "string": "agreement1"
+                  "string": "ag1"
                 }
               ]
             },
@@ -407,7 +386,7 @@
                       "symbol": "Agreement"
                     },
                     {
-                      "string": "agreement1"
+                      "string": "ag1"
                     }
                   ]
                 },
@@ -433,7 +412,7 @@
                         "symbol": "agreement_id"
                       },
                       "val": {
-                        "string": "agreement1"
+                        "string": "ag1"
                       }
                     },
                     {
@@ -569,7 +548,7 @@
                   "symbol": "Agreement"
                 },
                 {
-                  "string": "agreement3"
+                  "string": "ag2"
                 }
               ]
             },
@@ -589,7 +568,7 @@
                       "symbol": "Agreement"
                     },
                     {
-                      "string": "agreement3"
+                      "string": "ag2"
                     }
                   ]
                 },
@@ -615,7 +594,7 @@
                         "symbol": "agreement_id"
                       },
                       "val": {
-                        "string": "agreement3"
+                        "string": "ag2"
                       }
                     },
                     {
@@ -883,7 +862,7 @@
                         "symbol": "max_calls_per_user_per_day"
                       },
                       "val": {
-                        "u32": 1
+                        "u32": 2
                       }
                     }
                   ]
@@ -943,7 +922,7 @@
                         "symbol": "call_count"
                       },
                       "val": {
-                        "u32": 1
+                        "u32": 2
                       }
                     },
                     {
@@ -951,7 +930,7 @@
                         "symbol": "daily_count"
                       },
                       "val": {
-                        "u32": 1
+                        "u32": 2
                       }
                     },
                     {
@@ -1133,39 +1112,6 @@
             "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
             "key": {
               "ledger_key_nonce": {
-                "nonce": "2032731177588607455"
-              }
-            },
-            "durability": "temporary"
-          }
-        },
-        [
-          {
-            "last_modified_ledger_seq": 0,
-            "data": {
-              "contract_data": {
-                "ext": "v0",
-                "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
-                "key": {
-                  "ledger_key_nonce": {
-                    "nonce": "2032731177588607455"
-                  }
-                },
-                "durability": "temporary",
-                "val": "void"
-              }
-            },
-            "ext": "v0"
-          },
-          6311999
-        ]
-      ],
-      [
-        {
-          "contract_data": {
-            "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4",
-            "key": {
-              "ledger_key_nonce": {
                 "nonce": "5541220902715666415"
               }
             },
@@ -1232,7 +1178,7 @@
             "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
             "key": {
               "ledger_key_nonce": {
-                "nonce": "4270020994084947596"
+                "nonce": "4837995959683129791"
               }
             },
             "durability": "temporary"
@@ -1247,7 +1193,7 @@
                 "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4",
                 "key": {
                   "ledger_key_nonce": {
-                    "nonce": "4270020994084947596"
+                    "nonce": "4837995959683129791"
                   }
                 },
                 "durability": "temporary",
@@ -1282,79 +1228,5 @@
       ]
     ]
   },
-  "events": [
-    {
-      "event": {
-        "ext": "v0",
-        "contract_id": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
-        "type_": "contract",
-        "body": {
-          "v0": {
-            "topics": [
-              {
-                "symbol": "agr_created"
-              },
-              {
-                "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITA4"
-              },
-              {
-                "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM"
-              }
-            ],
-            "data": {
-              "map": [
-                {
-                  "key": {
-                    "symbol": "agent"
-                  },
-                  "val": "void"
-                },
-                {
-                  "key": {
-                    "symbol": "agreement_id"
-                  },
-                  "val": {
-                    "string": "agreement3"
-                  }
-                },
-                {
-                  "key": {
-                    "symbol": "end_date"
-                  },
-                  "val": {
-                    "u64": "2000"
-                  }
-                },
-                {
-                  "key": {
-                    "symbol": "monthly_rent"
-                  },
-                  "val": {
-                    "i128": "100000"
-                  }
-                },
-                {
-                  "key": {
-                    "symbol": "security_deposit"
-                  },
-                  "val": {
-                    "i128": "10000"
-                  }
-                },
-                {
-                  "key": {
-                    "symbol": "start_date"
-                  },
-                  "val": {
-                    "u64": "1000"
-                  }
-                }
-              ]
-            }
-          }
-        }
-      },
-      "failed_call": false
-    }
-  ]
+  "events": []
 }
