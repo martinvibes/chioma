@@ -6,20 +6,23 @@ Welcome to the Chioma backend documentation hub. This index covers all aspects o
 
 ## Navigation
 
-| Category | Description |
-|---|---|
-| [Getting Started](#getting-started) | Prerequisites, local setup, environment config |
-| [API Reference](#api-reference) | Endpoint docs, standards, versioning, changelog |
-| [Architecture](#architecture) | System design, dependency graph, performance |
-| [Database](#database) | Schema, migrations, indexes |
-| [Blockchain](#blockchain) | Stellar integration, anchor, SEP-0010 auth |
-| [Caching](#caching) | Redis/Upstash strategy, invalidation, monitoring |
-| [Queues](#queues) | Bull queue implementation |
-| [Deployment](#deployment) | Production setup, Docker, CI/CD |
-| [Security](#security) | Encryption, threat model, compliance |
-| [Integrations](#integrations) | Third-party services |
-| [Support](#support) | Support procedures, SLAs, maintenance schedules |
-| [Community](#community) | Contributing, code of conduct, team policies |
+| Category                            | Description                                      |
+| ----------------------------------- | ------------------------------------------------ |
+| [Getting Started](#getting-started) | Prerequisites, local setup, environment config   |
+| [API Reference](#api-reference)     | Endpoint docs, standards, versioning, changelog  |
+| [Architecture](#architecture)       | System design, dependency graph, performance     |
+| [Database](#database)               | Schema, migrations, indexes                      |
+| [Blockchain](#blockchain)           | Stellar integration, anchor, SEP-0010 auth       |
+| [Authentication](#authentication)   | JWT, Stellar auth, MFA, guards, security         |
+| [Caching](#caching)                 | Redis/Upstash strategy, invalidation, monitoring |
+| [Queues](#queues)                   | Bull queue implementation                        |
+| [Deployment](#deployment)           | Production setup, Docker, CI/CD                  |
+| [Error Handling](#error-handling)    | Exception filters, error types, error responses  |
+| [Logging & Monitoring](#logging--monitoring) | Logging, Prometheus, Grafana, Sentry, alerts |
+| [Security](#security)               | Encryption, threat model, compliance             |
+| [Integrations](#integrations)       | Third-party services                             |
+| [Support](#support)                 | Support procedures, SLAs, maintenance schedules  |
+| [Community](#community)             | Contributing, code of conduct, team policies     |
 
 ---
 
@@ -57,20 +60,20 @@ The API will be available at `http://localhost:5000/api` and Swagger UI at `http
 
 ## API Reference
 
-| Document | Summary |
-|---|---|
-| [API Overview](./api/api-documentation.md) | Base URL, auth, all endpoint groups |
-| [API Standards](./api/API-STANDARDS.md) | Annotation conventions, request/response formats |
-| [Documentation Standards](./DOCUMENTATION-STANDARDS.md) | README, code comments, API docs, architecture standards |
-| [Authentication Guide](./api/AUTHENTICATION.md) | JWT flow, SEP-0010, refresh tokens |
-| [Error Codes](./api/ERROR-CODES.md) | All error codes, HTTP status mapping, examples |
-| [Rate Limiting](./api/RATE-LIMITING.md) | Limits, quotas, headers, retry guidance |
-| [Pagination](./api/PAGINATION.md) | Cursor and offset pagination standards |
-| [API Versioning](./api/API-VERSIONING.md) | URI versioning strategy and deprecation policy |
-| [API Changelog](./api/API-CHANGELOG.md) | History of breaking and non-breaking changes |
-| [SDK Generation](./api/SDK-GENERATION.md) | Auto-generate client SDKs from OpenAPI spec |
-| [Webhook Verification](./api/WEBHOOK_SIGNATURE_VERIFICATION.md) | Validate incoming webhook payloads |
-| [Webhook Management](./api/WEBHOOK-MANAGEMENT.md) | Webhook registration, events, payloads, retries, security |
+| Document                                                        | Summary                                                   |
+| --------------------------------------------------------------- | --------------------------------------------------------- |
+| [API Overview](./api/api-documentation.md)                      | Base URL, auth, all endpoint groups                       |
+| [API Standards](./api/API-STANDARDS.md)                         | Annotation conventions, request/response formats          |
+| [Documentation Standards](./DOCUMENTATION-STANDARDS.md)         | README, code comments, API docs, architecture standards   |
+| [Authentication Guide](./api/AUTHENTICATION.md)                 | JWT flow, SEP-0010, refresh tokens                        |
+| [Error Codes](./api/ERROR-CODES.md)                             | All error codes, HTTP status mapping, examples            |
+| [Rate Limiting](./api/RATE-LIMITING.md)                         | Limits, quotas, headers, retry guidance                   |
+| [Pagination](./api/PAGINATION.md)                               | Cursor and offset pagination standards                    |
+| [API Versioning](./api/API-VERSIONING.md)                       | URI versioning strategy and deprecation policy            |
+| [API Changelog](./api/API-CHANGELOG.md)                         | History of breaking and non-breaking changes              |
+| [SDK Generation](./api/SDK-GENERATION.md)                       | Auto-generate client SDKs from OpenAPI spec               |
+| [Webhook Verification](./api/WEBHOOK_SIGNATURE_VERIFICATION.md) | Validate incoming webhook payloads                        |
+| [Webhook Management](./api/WEBHOOK-MANAGEMENT.md)               | Webhook registration, events, payloads, retries, security |
 
 **Swagger UI** is served at `/api/docs` and is auto-generated from NestJS `@ApiProperty` / `@ApiOperation` decorators — it always reflects the current codebase.
 
@@ -81,6 +84,7 @@ The API will be available at `http://localhost:5000/api` and Swagger UI at `http
 | Document                                                                   | Summary                                       |
 | -------------------------------------------------------------------------- | --------------------------------------------- |
 | [Dependency Graph](./architecture/DEPENDENCY_GRAPH.md)                     | Module dependency overview                    |
+| [Architecture Documentation](./architecture/ARCHITECTURE_DOCUMENTATION.md) | System architecture, layers, integrations     |
 | [Scalability & Performance](./architecture/scalability-and-performance.md) | Horizontal scaling, caching layers, DB tuning |
 
 **Key design decisions:**
@@ -95,9 +99,10 @@ The API will be available at `http://localhost:5000/api` and Swagger UI at `http
 
 ## Database
 
-| Document                                                 | Summary                                 |
-| -------------------------------------------------------- | --------------------------------------- |
-| [Performance Indexes](./database/PERFORMANCE_INDEXES.md) | Index strategy for high-traffic queries |
+| Document                                                     | Summary                                 |
+| ------------------------------------------------------------ | --------------------------------------- |
+| [Database Guide](./database/DATABASE_DOCUMENTATION_GUIDE.md) | Schema, migrations, backup, recovery    |
+| [Performance Indexes](./database/PERFORMANCE_INDEXES.md)     | Index strategy for high-traffic queries |
 
 Migrations live in `backend/migrations/`. Run with:
 
@@ -111,14 +116,26 @@ pnpm run migration:generate  # generate migration from entity changes
 
 ## Blockchain
 
-| Document | Summary |
-|---|---|
+| Document                                                                     | Summary                                              |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------- |
 | [Blockchain Integration Guide](./blockchain/BLOCKCHAIN-INTEGRATION-GUIDE.md) | SDK usage, accounts, transactions, wallets, security |
-| [Stellar Auth (SEP-0010)](./blockchain/stellar-auth.md) | Wallet-based authentication flow |
-| [Anchor Integration Guide](./blockchain/anchor-integration-guide.md) | Fiat on/off-ramp via Stellar anchors |
-| [Anchor Implementation](./blockchain/ANCHOR_IMPLEMENTATION.md)       | Internal implementation notes        |
-| [Anchor Integration](./blockchain/anchor-integration.md)             | Additional anchor setup details      |
-| [Payment Gateway](./blockchain/payment-gateway-integration.md)       | Stellar payment processing           |
+| [Stellar Auth (SEP-0010)](./blockchain/stellar-auth.md)                      | Wallet-based authentication flow                     |
+| [Anchor Integration Guide](./blockchain/anchor-integration-guide.md)         | Fiat on/off-ramp via Stellar anchors                 |
+| [Anchor Implementation](./blockchain/ANCHOR_IMPLEMENTATION.md)               | Internal implementation notes                        |
+| [Anchor Integration](./blockchain/anchor-integration.md)                     | Additional anchor setup details                      |
+| [Payment Gateway](./blockchain/payment-gateway-integration.md)               | Stellar payment processing                           |
+
+---
+
+## Authentication
+
+| Document                                                     | Summary                                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| [Authentication Documentation](./AUTHENTICATION.md)          | Full architecture, JWT/Stellar flows, MFA, guards, decorators, security  |
+| [API Authentication Guide](./api/AUTHENTICATION.md)          | Quick API reference with request/response examples                       |
+| [Stellar Auth (SEP-0010)](./blockchain/stellar-auth.md)      | Wallet-based authentication flow details                                 |
+
+Chioma supports dual authentication: **JWT (email/password)** and **Stellar SEP-0010 (wallet)**. Both methods issue JWT access tokens with 15-minute lifetime and HttpOnly cookie refresh tokens with 7-day lifetime. MFA via TOTP is available for all accounts.
 
 ---
 
@@ -146,10 +163,11 @@ pnpm run migration:generate  # generate migration from entity changes
 
 ## Deployment
 
-| Document                                             | Summary                                    |
-| ---------------------------------------------------- | ------------------------------------------ |
-| [Deployment Guide](./deployment/DEPLOYMENT.md)       | Step-by-step deployment                    |
-| [Production Setup](./deployment/PRODUCTION_SETUP.md) | Environment config, secrets, health checks |
+| Document                                                     | Summary                                                                 |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [Deployment Guide](./deployment/DEPLOYMENT.md)               | Full runbook for dev/staging/prod deployments, monitoring, and rollback |
+| [Deployment Checklist](./deployment/DEPLOYMENT_CHECKLIST.md) | Pre-deploy and post-deploy safety checklist                             |
+| [Production Setup](./deployment/PRODUCTION_SETUP.md)         | Environment config, secrets, health checks                              |
 
 Docker Compose files:
 
@@ -160,11 +178,33 @@ Docker Compose files:
 
 ---
 
+## Error Handling
+
+| Document                                    | Summary                                                      |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| [Error Handling](./ERROR_HANDLING.md)       | Exception filters, custom errors, frontend classification, error response formats |
+
+The `AllExceptionsFilter` catches all unhandled exceptions and maps them to standardized JSON responses. The frontend uses an `AppError` type system with error classification, user-friendly messages, and retry logic.
+
+---
+
+## Logging & Monitoring
+
+| Document                                                  | Summary                                                          |
+| --------------------------------------------------------- | ---------------------------------------------------------------- |
+| [Logging & Monitoring](./LOGGING_AND_MONITORING.md)       | LoggerService, middleware, Sentry, Prometheus, Grafana, Loki, alerts |
+
+The platform uses structured JSON logging with correlation IDs, sensitive data sanitization, and a full Prometheus + Grafana + Loki + Alertmanager monitoring stack.
+
+---
+
 ## Security
 
 | Document                                                                   | Summary                                   |
 | -------------------------------------------------------------------------- | ----------------------------------------- |
 | [Encryption](./encryption.md)                                              | Field-level encryption for sensitive data |
+| [Security Policies](./security/SECURITY_POLICIES_AND_STANDARDS.md)         | Backend security controls and procedures  |
+| [Authorization Guide](./security/AUTHORIZATION_DOCUMENTATION.md)           | RBAC, permissions, and access control     |
 | [Tenant Screening Compliance](./compliance/TENANT_SCREENING_COMPLIANCE.md) | FCRA / compliance notes                   |
 
 Security features active in every request:
@@ -193,6 +233,8 @@ Security features active in every request:
 | ----------------------------------------------------------------- | ----------------------- |
 | [Contributing](./community/CONTRIBUTING.md)                       | How to contribute       |
 | [Contribution Guidelines](./community/CONTRIBUTION_GUIDELINES.md) | Detailed guidelines     |
+| [Code Review Standards](./community/CODE_REVIEW_STANDARDS.md)     | Review criteria, approvals, and feedback rules |
+| [Testing Standards](./community/TESTING_STANDARDS.md)             | Unit/integration/E2E standards and coverage requirements |
 | [Code of Conduct](./community/CODE_OF_CONDUCT.md)                 | Community standards     |
 | [Community Support](./community/COMMUNITY-SUPPORT.md)             | Where to get help       |
 | [Team Policies](./community/TEAM_POLICIES.md)                     | Internal team standards |

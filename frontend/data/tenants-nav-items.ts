@@ -48,7 +48,7 @@ export const tenantNavItems: navItems[] = [
   },
   {
     name: 'Settings',
-    href: '/#',
+    href: '/tenant/settings',
     icon: Settings,
   },
 ];
