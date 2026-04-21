@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
- * Next.js Middleware — Server-side route protection.
+ * Next.js Proxy — Server-side route protection.
  *
  * DISABLED FOR DEVELOPMENT - All routes are now accessible without authentication
  *
@@ -9,14 +9,14 @@ import { NextRequest, NextResponse } from 'next/server';
  * 1. Uncomment the auth check below
  * 2. Uncomment the matcher config
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // AUTH DISABLED - Allow all access
   // const authToken = request.cookies.get('chioma_auth_token')?.value;
   // if (!authToken) {
-  //   console.log('🔒 Middleware: No auth token, redirecting to home');
+  //   console.log('🔒 Proxy: No auth token, redirecting to home');
   //   return NextResponse.redirect(new URL('/', request.url));
   // }
-  // console.log('✅ Middleware: Auth token found, allowing access');
+  // console.log('✅ Proxy: Auth token found, allowing access');
 
   return NextResponse.next();
 }
