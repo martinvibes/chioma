@@ -155,16 +155,13 @@ function getSeedConfig(options: SeedUserOptions): SeedUserConfig {
     password: options.password,
     firstName:
       options.firstName ?? process.env.USER_DEFAULT_FIRST_NAME ?? 'Demo',
-    lastName:
-      options.lastName ?? process.env.USER_DEFAULT_LAST_NAME ?? 'User',
+    lastName: options.lastName ?? process.env.USER_DEFAULT_LAST_NAME ?? 'User',
     force: options.force,
     autoGeneratePassword,
   };
 }
 
-export async function seedUser(
-  options: SeedUserOptions = { force: false },
-) {
+export async function seedUser(options: SeedUserOptions = { force: false }) {
   const config = getSeedConfig(options);
   validateEmail(config.email);
 

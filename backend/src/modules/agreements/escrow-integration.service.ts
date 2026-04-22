@@ -19,7 +19,7 @@ export class EscrowIntegrationService {
     private readonly agreementRepository: Repository<RentAgreement>,
     private readonly escrowContract: EscrowContractService,
     private readonly dataSource: DataSource,
-  ) { }
+  ) {}
 
   async createEscrowForAgreement(agreementId: string): Promise<StellarEscrow> {
     const queryRunner = this.dataSource.createQueryRunner();

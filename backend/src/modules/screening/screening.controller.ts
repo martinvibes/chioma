@@ -37,7 +37,7 @@ type RequestWithUser = {
 @ApiTags('Tenant Screening')
 @Controller('screenings/tenant')
 export class ScreeningController {
-  constructor(private readonly screeningService: ScreeningService) { }
+  constructor(private readonly screeningService: ScreeningService) {}
 
   @Post('request')
   @UseGuards(JwtAuthGuard, RolesGuard)

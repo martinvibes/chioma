@@ -30,7 +30,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Test & Lint
-    if: github.event_name == 'push'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -80,7 +79,6 @@ jobs:
     runs-on: ubuntu-latest
     name: E2E Tests
     needs: test
-    if: github.event_name == 'push'
 
     services:
       postgres:
@@ -156,7 +154,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Migration rollback verify
     needs: test
-    if: github.event_name == 'push'
 
     services:
       postgres:
@@ -216,7 +213,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Security Scan
     needs: test
-    if: github.event_name == 'push'
     permissions:
       contents: read
       security-events: write
@@ -250,7 +246,6 @@ jobs:
     runs-on: ubuntu-latest
     name: API Docs & Contract
     needs: [test, e2e-tests]
-    if: github.event_name == 'push'
     continue-on-error: true
     services:
       postgres:

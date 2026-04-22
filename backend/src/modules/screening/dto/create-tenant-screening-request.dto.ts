@@ -9,10 +9,7 @@ import {
   IsUUID,
 } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import {
-  ScreeningCheckType,
-  UserScreeningProvider,
-} from '../screening.enums';
+import { ScreeningCheckType, UserScreeningProvider } from '../screening.enums';
 
 export class CreateTenantScreeningRequestDto {
   @ApiProperty()

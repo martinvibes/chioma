@@ -470,10 +470,8 @@ export class ScreeningService {
 
   private isSandboxMode(): boolean {
     return (
-      this.configService.get<string>(
-        'USER_SCREENING_SANDBOX_MODE',
-        'true',
-      ) === 'true'
+      this.configService.get<string>('USER_SCREENING_SANDBOX_MODE', 'true') ===
+      'true'
     );
   }
 

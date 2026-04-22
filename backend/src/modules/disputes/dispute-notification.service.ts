@@ -28,9 +28,7 @@ export class DisputeNotificationService {
 
     // Notify the other party (landlord or tenant)
     const otherPartyId =
-      agreement.adminId === initiator.id
-        ? agreement.userId
-        : agreement.adminId;
+      agreement.adminId === initiator.id ? agreement.userId : agreement.adminId;
 
     await this.sendNotification({
       userId: otherPartyId,
@@ -61,9 +59,7 @@ export class DisputeNotificationService {
 
     // Notify the other party
     const otherPartyId =
-      agreement.adminId === initiator.id
-        ? agreement.userId
-        : agreement.adminId;
+      agreement.adminId === initiator.id ? agreement.userId : agreement.adminId;
 
     await this.sendNotification({
       userId: otherPartyId,

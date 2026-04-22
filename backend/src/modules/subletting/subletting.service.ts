@@ -30,7 +30,7 @@ export class SublettingService {
     @InjectRepository(Property)
     private readonly propertyRepository: Repository<Property>,
     private readonly notificationsService: NotificationsService,
-  ) { }
+  ) {}
 
   async requestSubletting(dto: RequestSublettingDto, tenantId: string) {
     const agreement = await this.agreementRepository.findOne({
