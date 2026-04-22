@@ -448,7 +448,7 @@ jobs:
         run: cd backend && pnpm run build
 
       - name: Run database migrations (staging)
-        if: ${{ secrets.DATABASE_URL_STAGING != '' }}
+        if: secrets.DATABASE_URL_STAGING != ''
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL_STAGING }}
         run: cd backend && pnpm run migration:run:prod
@@ -486,7 +486,7 @@ jobs:
         run: cd backend && pnpm run build
 
       - name: Run database migrations (production)
-        if: ${{ secrets.DATABASE_URL != '' }}
+        if: secrets.DATABASE_URL != ''
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: cd backend && pnpm run migration:run:prod
