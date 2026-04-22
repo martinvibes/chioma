@@ -6,8 +6,6 @@ on:
     paths:
       - 'backend/**'
       - '.github/workflows/backend-ci-cd.yml'
-    tags:
-      - 'v*'
   pull_request:
     paths:
       - 'backend/**'
@@ -352,7 +350,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     needs: test
-    if: always() && (needs.test.result == 'success' || github.event_name == 'pull_request')
 
     steps:
       - name: Checkout code
