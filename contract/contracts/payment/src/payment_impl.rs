@@ -3,7 +3,40 @@ use soroban_sdk::{Address, Env, String};
 
 use crate::errors::PaymentError;
 use crate::storage::DataKey;
-use crate::types::{AgreementStatus, PaymentRecord, RentAgreement};
+use crate::types::{AgreementStatus, EscalationType, PaymentRecord, RentAgreement, RentEscalationConfig};
+
+/// Calculate the rent amount for a specific period (payment number) with escalation
+pub fn calculate_rent_for_period(
+    base_rent: i128,
+    payment_number: u32,
+    config: &RentEscalationConfig,
+) -> i128 {
+    match config.escalation_type {
+        EscalationType::None => base_rent,
+        EscalationType::FixedAnnual => {
+            if config.payments_per_year == 0 {
+                return base_rent;
+            }
+
+            // Calculate how many years have passed since the first payment
+            // payment_number is 1-indexed (1st payment, 2nd payment, etc.)
+            let years_passed = (payment_number - 1) / config.payments_per_year;
+
+            if years_passed == 0 {
+                return base_rent;
+            }
+
+            // Calculate escalated rent: Rent = BaseRent * (1 + rate)^years
+            let mut current_rent = base_rent;
+            for _ in 0..years_passed {
+                // annual_rate_bps is in basis points (1 bps = 0.01%)
+                let increase = (current_rent * (config.annual_rate_bps as i128)) / 10000;
+                current_rent += increase;
+            }
+            current_rent
+        }
+    }
+}
 
 /// Create an immutable payment record
 pub fn create_payment_record(
