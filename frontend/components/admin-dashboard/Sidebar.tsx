@@ -56,12 +56,16 @@ export default function AdminSidebar() {
         <button className="group flex w-full cursor-pointer items-center gap-3 rounded-xl px-4 py-2.5 text-left transition-colors hover:bg-white/10">
           <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20">
             <Image
-              src="/avatar.png"
+              src={user?.avatar || '/avatar.png'}
               alt="User Avatar"
               width={100}
               height={100}
               sizes="40px"
-              className="rounded-full"
+              className="rounded-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = '/avatar.png';
+              }}
             />
           </div>
 

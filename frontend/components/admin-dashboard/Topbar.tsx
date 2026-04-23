@@ -174,12 +174,16 @@ export default function AdminTopbar({ pageTitle }: { pageTitle: string }) {
             <button className="group flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all w-full text-left">
               <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20">
                 <Image
-                  src="/avatar.png"
+                  src={user?.avatar || '/avatar.png'}
                   alt="User Avatar"
                   width={100}
                   height={100}
                   sizes="40px"
-                  className="rounded-full"
+                  className="rounded-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/avatar.png';
+                  }}
                 />
               </div>
 

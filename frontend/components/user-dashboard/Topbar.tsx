@@ -1,7 +1,9 @@
 'use client';
 
-import { Menu, Search, Bell, User } from 'lucide-react';
+import { Menu, Search, Bell, User as UserIcon } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
+import { useAuth } from '@/store/authStore';
 import type { TopbarProps } from './types';
 
 /**
@@ -16,6 +18,7 @@ export function Topbar({
   className = '',
 }: TopbarProps) {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const { user } = useAuth();
 
   return (
     <header
@@ -62,8 +65,25 @@ export function Topbar({
           )}
 
           {showUserMenu && (
-            <button className="p-2 hover:bg-white/10 rounded-lg transition-colors">
-              <User size={20} className="text-blue-300" />
+            <button className="p-1 hover:bg-white/10 rounded-lg transition-colors overflow-hidden border border-white/10">
+              {user?.avatar ? (
+                <div className="relative h-8 w-8">
+                  <Image
+                    src={user.avatar}
+                    alt="User Profile"
+                    fill
+                    className="object-cover rounded-md"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="p-1">
+                  <UserIcon size={20} className="text-blue-300" />
+                </div>
+              )}
             </button>
           )}
         </div>
