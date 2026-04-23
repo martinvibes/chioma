@@ -38,8 +38,8 @@ fn make_input(
 ) -> AgreementInput {
     AgreementInput {
         agreement_id: String::from_str(env, agreement_id),
-        admin: landlord.clone(),
-        user: tenant.clone(),
+        admin: admin.clone(),
+        user: user.clone(),
         agent: None,
         terms: AgreementTerms {
             monthly_rent: 100_000,

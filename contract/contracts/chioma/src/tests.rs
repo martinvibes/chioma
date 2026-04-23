@@ -588,8 +588,8 @@ fn create_pending_agreement(
 ) {
     client.create_agreement(&AgreementInput {
         agreement_id: String::from_str(env, agreement_id).clone(),
-        admin: landlord.clone(),
-        user: tenant.clone(),
+        admin: admin.clone(),
+        user: user.clone(),
         agent: None,
         terms: AgreementTerms {
             monthly_rent: 1000,

@@ -48,8 +48,8 @@ fn create_agreement_helper(
 
     client.create_agreement(&AgreementInput {
         agreement_id: id.clone(),
-        admin: landlord.clone(),
-        user: tenant.clone(),
+        admin: admin.clone(),
+        user: user.clone(),
         agent: None,
         terms: AgreementTerms {
             monthly_rent: 1000,
